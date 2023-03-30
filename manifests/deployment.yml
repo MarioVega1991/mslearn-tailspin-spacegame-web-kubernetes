@@ -17,22 +17,3 @@ spec:
           image: tailspinspacegame14901.azurecr.io/web
           ports:
           - containerPort: 80
-
-kind: Deployment
-metadata:
-  name: leaderboard
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: leaderboard
-  template:
-    metadata:
-      labels:
-        app: leaderboard
-    spec:
-      containers:
-        - name: leaderboard
-          image: tailspinspacegame14901.azurecr.io/leaderboard
-          ports:
-          - containerPort: 80
