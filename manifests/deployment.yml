@@ -1,43 +1,38 @@
-apiVersion: apps/v1
-kind: List
+apiVersion : apps/v1
+kind: Deployment
 metadata:
-  name: deployments
-items:
-- apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: web
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+  name: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
         app: web
-    template:
-      metadata:
-        labels:
-          app: web
-      spec:
-        containers:
-          - name: web
-            image: tailspinspacegame14901.azurecr.io/web
-            ports:
-            - containerPort: 80
-- apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    name: leaderboard
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+    spec:
+      containers:
+        - name: web
+          image: tailspinspacegame14901.azurecr.io/web
+          ports:
+          - containerPort: 80
+
+kind: Deployment
+metadata:
+  name: leaderboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leaderboard
+  template:
+    metadata:
+      labels:
         app: leaderboard
-    template:
-      metadata:
-        labels:
-          app: leaderboard
-      spec:
-        containers:
-          - name: leaderboard
-            image: tailspinspacegame14901.azurecr.io/leaderboard
-            ports:
-            - containerPort: 80
+    spec:
+      containers:
+        - name: leaderboard
+          image: tailspinspacegame14901.azurecr.io/leaderboard
+          ports:
+          - containerPort: 80
